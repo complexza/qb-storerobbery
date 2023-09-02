@@ -35,18 +35,12 @@ RegisterNetEvent('qb-storerobbery:server:takeMoney', function(register, isDone)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
 
-    local playerPed = GetPlayerPed(src)
-    local playerCoords = GetEntityCoords(playerPed)
-    if #(playerCoords - Config.Registers[register][1].xyz) > 3.0 or (not Config.Registers[register].robbed and not isDone) or (Config.Registers[register].time <= 0 and not isDone) then
-        return DropPlayer(src, "Attempted exploit abuse")
-    end
-
     -- Add any additional code you want above this comment to do whilst robbing a register, everything above the if statement under this will be triggered every 2 seconds when a register is getting robbed.
 
     if isDone then
         local bags = math.random(1,3)
         local info = {
-            worth = math.random(cashA, cashB)
+            worth = math.random(Config.minEarn, Config.maxEarn)
         }
         Player.Functions.AddItem('markedbills', bags, false, info)
         TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")

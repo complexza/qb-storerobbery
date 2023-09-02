@@ -132,15 +132,15 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
         local dist = #(pos - Config.Registers[k][1].xyz)
-        if dist <= 1 and not Config.Registers[k].robbed then
+        if dist <= 2 and not Config.Registers[k].robbed then
             if CurrentCops >= Config.MinimumStoreRobberyPolice then
                 if usingAdvanced then
                     exports['ps-ui']:Circle(function(success)
                         if success then
                             if currentRegister ~= 0 then
+                                print(currentRegister)
                                 TriggerServerEvent('qb-storerobbery:server:setRegisterStatus', currentRegister)
                                 local lockpickTime = 25000
-                                LockpickDoorAnim(lockpickTime)
                                 QBCore.Functions.Progressbar("search_register", Lang:t("text.emptying_the_register"), lockpickTime, false, true, {
                                     disableMovement = true,
                                     disableCarMovement = true,
@@ -149,7 +149,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                                 }, {
                                     animDict = "veh@break_in@0h@p_m_one@",
                                     anim = "low_force_entry_ds",
-                                    flags = 16,
+                                    flags = 17,
                                 }, {}, {}, function() -- Done
                                     openingDoor = false
                                     ClearPedTasks(PlayerPedId())
@@ -167,9 +167,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                                     end
                                 end)
                             else
-                                SendNUIMessage({
-                                    action = "kekw",
-                                })
+                                QBCore.Functions.Notify("You're not near a register!", "error")
                             end
                         else
                             if math.random(1, 100) < 20 then
@@ -197,7 +195,6 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                             if currentRegister ~= 0 then
                                 TriggerServerEvent('qb-storerobbery:server:setRegisterStatus', currentRegister)
                                 local lockpickTime = 25000
-                                LockpickDoorAnim(lockpickTime)
                                 QBCore.Functions.Progressbar("search_register", Lang:t("text.emptying_the_register"), lockpickTime, false, true, {
                                     disableMovement = true,
                                     disableCarMovement = true,
@@ -206,7 +203,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                                 }, {
                                     animDict = "veh@break_in@0h@p_m_one@",
                                     anim = "low_force_entry_ds",
-                                    flags = 16,
+                                    flags = 17,
                                 }, {}, {}, function() -- Done
                                     openingDoor = false
                                     ClearPedTasks(PlayerPedId())
@@ -224,9 +221,7 @@ RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
                                     end
                                 end)
                             else
-                                SendNUIMessage({
-                                    action = "kekw",
-                                })
+                                QBCore.Functions.Notify("You're not near a register!", "error")
                             end
                         else
                             if math.random(1, 100) < 40 then
