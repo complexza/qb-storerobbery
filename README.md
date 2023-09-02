@@ -1,5 +1,5 @@
-# qb-storerobbery
-Store Robberies For QB-Core
+# qb-storerobbery | Project Sloth Dispatch & UI
+Store Robberies For QB-Core | Changes I have done is for ps-dispatch and ps-ui
 
 # License
 
