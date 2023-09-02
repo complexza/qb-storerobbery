@@ -7,6 +7,12 @@ Config.MinimumStoreRobberyPolice = 2
 Config.resetTime = (60 * 1000) * 30
 Config.tickInterval = 1000
 
+-- Minigame Settings for ps-ui
+Config.AdvancedCircles = 3
+Config.AdvancedTime = 20
+Config.NormalCircles = 3
+Config.NormalTime = 10
+
 Config.Registers = {
     [1] = {vector3(-47.24,-1757.65, 29.53), robbed = false, time = 0, safeKey = 1, camId = 4},
     [2] = {vector3(-48.58,-1759.21, 29.59), robbed = false, time = 0, safeKey = 1, camId = 4},

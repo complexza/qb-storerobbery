@@ -114,22 +114,6 @@ RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
     end
 end)
 
-RegisterNetEvent('qb-storerobbery:server:callCops', function(type, safe, streetLabel, coords)
-    local cameraId
-    if type == "safe" then
-        cameraId = Config.Safes[safe].camId
-    else
-        cameraId = Config.Registers[safe].camId
-    end
-    local alertData = {
-        title = "10-33 | Shop Robbery",
-        coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = Lang:t("email.someone_is_trying_to_rob_a_store",{street = streetLabel, cameraId1 = cameraId})
-    }
-    TriggerClientEvent("qb-storerobbery:client:robberyCall", -1, type, safe, streetLabel, coords)
-    TriggerClientEvent("qb-phone:client:addPoliceAlert", -1, alertData)
-end)
-
 RegisterNetEvent('qb-storerobbery:server:removeAdvancedLockpick', function()
     local Player = QBCore.Functions.GetPlayer(source)
 
